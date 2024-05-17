@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .main{
     display: flex;
 }
@@ -27,3 +28,34 @@
   color: #46319C;
 }
 
+=======
+.main{
+    display: flex;
+}
+
+.mainpic{
+   
+ 
+   margin-left: 150px;
+   
+}
+.text{
+    width: 800px;
+      margin-top: 200px;  
+   
+    justify-content: center;
+    align-items: center;
+   text-align: center;
+    
+
+ 
+}
+.big{
+    
+    font-size: xx-large;
+   text-align: center;
+   padding: 30px;
+  color: #46319C;
+}
+
+>>>>>>> d68b664 (added_shubha_files)
