@@ -1,35 +1,42 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { Link } from "react-router-dom";
+import "./Signin.css";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
 
-  const handleForgotPassword = async (e) => {
+  const handleChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/forgot-password",
-        { email }
-      );
-      console.log(response.data);
-      // Handle successful password reset request
-    } catch (error) {
-      console.error("Error requesting password reset", error);
-    }
+    // Perform form validation here
+
+    // Log form data to console
+    console.log({ email });
   };
 
   return (
-    <form onSubmit={handleForgotPassword}>
+    <div className="auth-form">
       <h2>Forgot Password</h2>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <button type="submit">Request Password Reset</button>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button type="submit">Reset Password</button>
+      </form>
+      <p>
+        Remembered your password? <Link to="/signin">Sign In here</Link>
+      </p>
+    </div>
   );
 };
 

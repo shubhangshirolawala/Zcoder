@@ -1,6 +1,6 @@
 import React from "react";
 import "./Login.css";
-const Form = ({ option }) => {
+const Form = ({ option, setOption }) => {
   return (
     <form className="account-form" onSubmit={(evt) => evt.preventDefault()}>
       <div
@@ -32,6 +32,23 @@ const Form = ({ option }) => {
           disabled={option === 1 || option === 3 ? true : false}
         />
       </div>
+      <ul className="options">
+        {/* <li
+          className={option === 1 ? "active" : ""}
+          onClick={() => setOption(1)}>
+          Sign in
+        </li>
+        <li
+          className={option === 2 ? "active" : ""}
+          onClick={() => setOption(2)}>
+          Sign up
+        </li> */}
+        <li
+          className={option === 3 ? "active" : ""}
+          onClick={() => setOption(3)}>
+          Forgot Password?
+        </li>
+      </ul>
       <div id="subbtn">
         <button className="btn-submit-form" type="submit">
           {option === 1
