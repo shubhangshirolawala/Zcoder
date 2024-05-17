@@ -312,7 +312,7 @@ ul {
   color: #aaa;
 }
 .account-form-fields > input::placeholder {
-  /* color: #aaa; */
+  color: #aaa;
 }
 .account-form-fields > input::-webkit-input-placeholder {
   color: #aaa;
