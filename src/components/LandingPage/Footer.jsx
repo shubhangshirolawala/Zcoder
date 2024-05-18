@@ -1,17 +1,18 @@
 import React from 'react'
-import yt from "../assets/images/yt.png"
-import li from "../assets/images/linked in.png"
-import meta from "../assets/images/meta.png"
-import ig from "../assets/images/mdi_instagram.png"
-import tw from "../assets/images/prime_twitter.png"
+import yt from "../../assets/images/yt.png"
+import li from "../../assets/images/linked in.png"
+import meta from "../../assets/images/meta.png"
+import ig from "../../assets/images/mdi_instagram.png"
+import tw from "../../assets/images/prime_twitter.png"
+//import you from "../../assets/images/"
+//import tw from "../../"
 
-import "../components/footer.css"
-
+import "./footer.css"
 const Footer = () => {
   return (
     <div className='footer'>
     <div className='icons'>
-        < img src={yt} className='b'></img>
+        < img src={yt} alt="yt" className='b'></img>
         <img src={li} className='b'></img>
         <img src={meta} className='b'></img>
         <img src={ig} className='b'></img>

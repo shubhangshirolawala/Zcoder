@@ -1,6 +1,7 @@
 import React from 'react'
-import mainpic from "../assets/images/mainpic.png"
+import mainpic from "../../assets/images/mainpic.png"
 import "./Main.css"
+
 const Main = () => {
   return (
     <div className='main'>
