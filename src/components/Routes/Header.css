@@ -1,0 +1,37 @@
+/* .header{
+    width: 100%;
+    height: 184px;
+    padding: 60px;
+
+    top: 0;
+    left: 0px;
+    display: flex;
+   justify-content:space-between ;
+    align-items: center;
+    
+} */
+.navbar{
+    display: flex;
+    justify-content:space-between ;
+    width: 200px;
+    margin-right: 20px;
+    color: #46319C;
+    font-weight: 400;
+    
+}
+.contact{
+  font-size: large;
+}
+.lo{
+  font-size: large;
+}
+.contact:hover  {
+    color: #C9B7E2;
+    cursor: pointer;
+   
+    
+  }
+  .lo:hover {
+    color: #C9B7E2;
+    cursor: pointer;
+  }
