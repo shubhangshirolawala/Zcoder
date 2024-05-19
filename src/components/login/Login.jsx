@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "./Form";
 import "./Login.css";
-import Navbar from "../Navbar";
+// import Navbar from "../Navbar";
 import zcoderlogo from "../../assets/images/Zcoderlogo.svg";
 const Login = () => {
   const [option, setOption] = React.useState(1);
