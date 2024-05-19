@@ -9,6 +9,7 @@ import Header from "./components/Routes/Header";
 import Footer from "./components/LandingPage/Footer";
 import LowerHeader from "./components/Routes/LowerHeader";
 import Bookmarks from "./components/Bookmarks";
+import BookmarkForm from "./pages/BookmarkForm";
 
 function App() {
   return (
@@ -17,8 +18,9 @@ function App() {
       <LowerHeader />
       <Routes>
         <Route path="/bookmark" element={<Bookmarks />} />
-        <Route exact path="/" element={<LandingPage />} />
+        {/* <Route exact path="/" element={<LandingPage />} /> */}
         <Route path="/login" element={<Login />} />
+        <Route path="/bookmarkform" element={<BookmarkForm />} />
       </Routes>
       <Footer />
       {/* <LandingPage/> */}
