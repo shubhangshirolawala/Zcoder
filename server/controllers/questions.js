@@ -66,5 +66,5 @@ module.exports = {
   getAllBookmarks,
   getAllQuestions,
   createQuestion,
-  deleteQuestion,
+  // deleteQuestion,
 };

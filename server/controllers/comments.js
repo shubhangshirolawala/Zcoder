@@ -28,11 +28,11 @@ const createComment = async (req, res) => {
 
 const getComment = async (req, res, next) => {
   const { id: commentID } = req.params;
-  //   const {
-  //     user: { userId },
-  //     // params: { id: jobId },
-  //   } = req;
-  const comment = await Comment.findOne({ _id: commentID });
+  const {
+    user: { userName },
+    // params: { id: jobId },
+  } = req;
+  const comment = await Comment.findOne({ _id: commentID, Author: userName });
   if (!comment) {
     return res.status(404).json({ msg: `No comment with id : ${commentID}` });
   }
@@ -41,11 +41,14 @@ const getComment = async (req, res, next) => {
 };
 const deleteComment = async (req, res, next) => {
   const { id: commentID } = req.params;
-//   const {
-//     user: { userId },
-//     // params: { id: jobId },
-//   } = req;
-  const comment = await Comment.findOneAndDelete({ _id: commentID});
+  const {
+    user: { userName },
+    // params: { id: jobId },
+  } = req;
+  const comment = await Comment.findOneAndDelete({
+    _id: commentID,
+    Author: userName,
+  });
   if (!comment) {
     return res.status(404).json({ msg: `No comment with id : ${commentID}` });
   }
@@ -58,7 +61,7 @@ const updateComment = async (req, res, next) => {
     // params: { id: jobId },
   } = req;
   const comment = await Comment.findOneAndUpdate(
-    { _id: commentID },
+    { _id: commentID, Author: userName },
     req.body,
     {
       new: true,
@@ -66,9 +69,9 @@ const updateComment = async (req, res, next) => {
     }
   );
 
-//   if (!task) {
-//     return res.status(404).json({ msg: `No task with id : ${taskID}` });
-//   }
+  if (!comment) {
+    return res.status(404).json({ msg: `No task with id : ${commentID}` });
+  }
 
   res.status(200).json({ comment });
 };

@@ -6,9 +6,9 @@ const {
   createQuestion,
   deleteQuestion,
 } = require("../controllers/questions");
-router.post("/getAllBookmarks", getAllBookmarks);
-router.post("/getAllQuestions", getAllQuestions);
+router.get("/getAllBookmarks", getAllBookmarks);
+router.get("/getAllQuestions", getAllQuestions);
 router.post("/createQuestion", createQuestion);
-router.delete("/deleteQuestion/:id",deleteQuestion);
+// router.delete("/deleteQuestion/:id",deleteQuestion);
 
 module.exports = router;

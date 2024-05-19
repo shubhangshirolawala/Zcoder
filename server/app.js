@@ -19,7 +19,7 @@ const commnetsRouter = require("./routes/comments");
 
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
-const questions = require('./models/questions');
+// const questions = require('./models/questions');
 
 app.use(express.json());
 // extra packages
