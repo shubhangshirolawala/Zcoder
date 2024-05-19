@@ -1,38 +1,194 @@
-.App {
+/* home.css */
+
+
+.homePageWrapper{
+  height: 100vh;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  color:#46319C;
+}
+
+.formWrapper{
+  background:#ffffff;
+  padding:20px;
+  border: 2px solid #fff;
+  box-shadow:inset 0 0 10px #C9B7E2;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.inputGroup{
+  display: flex;
+  flex-direction: column;
+}
+
+.mainLable{
+  margin-bottom:20px;
+  text-align:left;
+  font-family:Arial, Helvetica, sans-serif;
+  margin-top: 0;
+  font-weight: normal;
+  color:#C9B7E2;
+  margin-left:8px;
+  margin-right: 8px;
+}
+
+.roomLable{
+  margin-top: 0;
+  font-weight: 400;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+}
+
+.homePageLogo{
+  position:absolute;
+  top: 0;
+  left:0;
+  margin-left:20px;
+  margin-top:20px;
+}
+
+.inputBox{
+  padding:10px;
+  outline:none;
+  border-color: #C9B7E2;
+  margin-bottom: 20px;
+  margin-left: 8px;
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.inputBox::placeholder{
+  color: #C9B7E2  ;
+}
+
+.btn{
+  padding:10px;
+  cursor: pointer;
+  transition:all 0.3s ease-in-out;
+}
+
+
+.joinBtn{
+  background-color: #46319C ;
+  color: #ffffff;
+  width:80px;
+  margin:0 auto;
+  margin-bottom: 20px;
+  margin-top: 10px; 
+
+  /* margin-left:auto;
+  margin-right:8px;*/
+  
+}
+
+.joinBtn:hover{
+  background-color: #674990;
+}
+
+.createInfo{
+  margin:0 auto;
+  margin-left: 25px;
+}
+
+.coder{
+  position:absolute;
+  top: 0;
+  left:0;
+  margin-left:120px;
+  margin-top:48px;
+  font-weight: 400;
+}
+
+
+/* editorpage.css */
+
+.CodeMirror{
+  /* min-height:calc(100vh-20px); */
+  height: 100%;
+  font-size:20px;
+  line-height:1.6;
+  padding-top:20px;
+}
+
+.aside{
+  background-color: #ffffff;
+  padding: 16px;
+  color: #46319C;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.asideInner{
+  flex: 1;
+}
+
+.clientList{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-left: 15px;
+  margin-top: 20px;
+}
+
+.copyBtn{
+  background-color: #46319C ;
+  color: #ffffff;
+  width:80%;
+  margin:0 auto;
+  margin-bottom: 20px;
+  margin-top: 10px; 
+}
+
+.leaveBtn{
+  background-color: #E02525;
+  color: #ffffff;
+  width:80%;
+  margin:0 auto;
+  margin-bottom: 20px;
+  margin-top: 10px; 
+}
+
+.leaveBtn:hover{
+  background-color: #7b2323;
+}
+
+.copyBtn:hover{
+  background-color: #674990;
+}
+
+.mainWrap{
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  height: 100vh;
+}
+
+.roomMembers{
+  margin-left: 5px;
+  margin-top: 25px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.editorWrap{
+  height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* client.css */
+.client {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+.userName {
+  margin-top: 4px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+
