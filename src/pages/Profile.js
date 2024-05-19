@@ -1,6 +1,6 @@
 // src/Profile.js
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import "./Profile.css"; // We'll create this CSS file for styling
 
 const Profile = () => {
@@ -17,7 +17,7 @@ const Profile = () => {
   //       });
   //   }, []);
 
-  if (!profile) return <div>Loading...</div>;
+  //   if (!profile) return <div>Loading...</div>;
   const profile = {
     name: "Aditi Yogesh",
     username: "aditi_03",
