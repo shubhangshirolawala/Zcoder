@@ -10,6 +10,7 @@ import Footer from "./components/LandingPage/Footer";
 import LowerHeader from "./components/Routes/LowerHeader";
 import Bookmarks from "./components/Bookmarks";
 import BookmarkForm from "./pages/BookmarkForm";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         {/* <Route exact path="/" element={<LandingPage />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/bookmarkform" element={<BookmarkForm />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
       <Footer />
       {/* <LandingPage/> */}
