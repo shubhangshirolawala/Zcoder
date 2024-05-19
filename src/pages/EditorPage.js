@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect } from 'react'
 import toast from 'react-hot-toast';
 import {useState , useRef} from 'react';
@@ -89,6 +90,19 @@ const EditorPage = () => {
     if (!location.state) {
         return <Navigate to="/" />;
     }
+=======
+import React from 'react'
+import {useState} from 'react';
+import Client from '../components/client'
+import Editor from '../components/editor'
+
+const EditorPage = () => {
+  const [clients,setClients]=useState([
+    {socketId:1, username : 'kushal patel'},
+    {socketId:2, username : 'manav patel'},
+  {socketId:3, username : 'yashvi patel'}]
+  );
+>>>>>>> origin/kushal
 
   return (
     <div className="mainWrap">
@@ -108,6 +122,7 @@ const EditorPage = () => {
                 ))}
             </div>
           </div>
+<<<<<<< HEAD
             <button className="btn copyBtn" onClick={copyRoomId}>Copy ROOM ID</button>
             <button className="btn leaveBtn" onClick={leaveRoom}>Leave</button>
         </div>
@@ -122,6 +137,15 @@ const EditorPage = () => {
         </div>
       </div>
   
+=======
+            <button className="btn copyBtn">Copy ROOM ID</button>
+            <button className="btn leaveBtn">Leave</button>
+        </div>
+        <div className="editorWrap">
+          <Editor/>
+        </div>
+      </div>
+>>>>>>> origin/kushal
     
   )
 }
