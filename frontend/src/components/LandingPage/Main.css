@@ -1,0 +1,21 @@
+.main {
+  display: flex;
+}
+
+.mainpic {
+  margin-left: 150px;
+}
+.text {
+  width: 800px;
+  margin-top: 200px;
+
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.big {
+  font-size: xx-large;
+  text-align: center;
+  padding: 30px;
+  color: #46319c;
+}
