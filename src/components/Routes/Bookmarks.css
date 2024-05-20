@@ -26,3 +26,32 @@
     /* box-shadow: 10px 10px 5px 12px lightblue; */
     
 }
+
+.class{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+   
+
+}
+
+
+  
+  /* Ensure the table takes up full width */
+  .subclass {
+    width: 100%;
+    ;
+
+  }
+  
+  /* Ensure table cells occupy full width */
+  .table th,
+  .table td {
+    width: 400px; /* Distribute evenly among three columns */
+    /* box-sizing: border-box;  */
+    padding: 8px;
+    text-align: center;
+    color: #46319C;
+  
+  }
