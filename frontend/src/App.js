@@ -12,6 +12,7 @@ import BookmarkForm from "./pages/BookmarkForm";
 import Profile from "./pages/Profile";
 import CalendarComponent from "./components/calender/CalendarComponent";
 import ReminderForm from "./components/calender/ReminderForm";
+import AddContestForm from "./components/calender/AddContestForm";
 
 function App() {
   return (
@@ -21,8 +22,6 @@ function App() {
           path="/"
           element={
             <>
-              <Header />
-              <LowerHeader />
               <LandingPage />
             </>
           }
@@ -43,6 +42,7 @@ function App() {
         <Route path="/bookmarkform" element={<BookmarkForm />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/calender" element={<CalendarComponent />} />
+        <Route path="/addcontest" element={<AddContestForm />} />
         <Route path="/reminder" element={<ReminderForm />} />
         {/* Add other routes as needed */}
       </Routes>
