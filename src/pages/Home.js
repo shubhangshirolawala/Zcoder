@@ -3,12 +3,10 @@ import { v4 as uuidV4 } from 'uuid';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import logo from "../assets/images/zcoderlogo.jpg"
-import { Toaster } from 'react-hot-toast';
+
+
 
 const Home = () => {
-
-    console.log("Home is Rendered");
     const [roomId,setRoomId]=useState('');
     const [username,setUserName]=useState('');
     const navigate=useNavigate();
@@ -23,7 +21,7 @@ const Home = () => {
 
     const joinRoom = () => {
         if(!roomId || !username){
-            toast.error('ROOM ID & Username Is Required');
+            toast.error('ROOM ID && username is required');
             return;
         }
 
@@ -37,16 +35,9 @@ const Home = () => {
     };
 
   return (
-    <div>
-    <div>
-    <Toaster 
-    position="top-right"
-    ></Toaster>
-  </div>
-
     <div className="homePageWrapper">
         <div>
-        < img src={logo} alt="Logo" width="100" height="96" className="homePageLogo"/>
+        < img src="/ZCODERLOGO.png" alt="Logo" width="100" height="96" className="homePageLogo"/>
         <h1 className="coder">Coder</h1>
         </div>
         <div className="formWrapper">
@@ -86,7 +77,6 @@ const Home = () => {
             
         </div>
         </div>
-    </div>
     </div>
   )
 }

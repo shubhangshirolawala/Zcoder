@@ -6,8 +6,8 @@ const LowerHeader = () => {
     <div className="lower">
          <p><NavLink to ="/home/bookmark" style={{ textDecoration: 'none'}}>BookMarks</NavLink></p>
          <p><NavLink to ="/rooms" style={{ textDecoration: 'none'}}>Rooms</NavLink></p>
-         <p><NavLink to ="/calendar" style={{ textDecoration: 'none'}}>Calendar</NavLink></p>
-         <p><NavLink to ="/profile" style={{ textDecoration: 'none'}}>Profile</NavLink></p>
+         <p><NavLink to ="/home/calendar" style={{ textDecoration: 'none'}}>Calendar</NavLink></p>
+         <p><NavLink to ="/home/profile" style={{ textDecoration: 'none'}}>Profile</NavLink></p>
          
     </div>
   )

@@ -2,8 +2,15 @@ import React from "react";
 import "./Navbar.css";
 import logo from "../../assets/images/zcoderlogo.jpg";
 
+import { useNavigate } from "react-router-dom";
 const Navbar=()=>{
-
+   const navigate=useNavigate();
+   const get = ()=>{
+      navigate('/signup');
+  }
+  const log =()=>{
+   navigate("/signin")
+  }
 return(
    <header className="header">
     <div className="div1 ">
@@ -12,8 +19,8 @@ return(
     </div>
 
    <nav className="navbar">
-   <button className="btn1">Get Started</button>
-   <button className="btn2">Log In</button>
+   <button className="btnget" onClick={get}>Get Started</button>
+   <button className="btnlog" onClick={log}>Log In</button>
     
    </nav>
    </header>

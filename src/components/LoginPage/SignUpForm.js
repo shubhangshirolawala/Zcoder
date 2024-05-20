@@ -1,0 +1,76 @@
+import React from "react";
+import "./Signin.css";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+const SignUpForm = () => {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [userName, setUserName] = useState('');
+  
+    const navigate = useNavigate();
+    const HandleSubmit = async (e) => {
+      e.preventDefault();
+      
+      try {
+        const response = await fetch('http://localhost:4000/api/v1/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, password, userName })
+        });
+  
+        if (!response.ok) {
+          throw new Error('Registration failed');
+        }
+  
+        navigate('/signin');
+        console.log('Registration successful');
+      } catch (error) {
+        console.error('Error during registration:', error.message);
+      }
+    };
+  return (
+    <form className="account-form" onSubmit={HandleSubmit}>
+      <div className="account-form-fields sign-up">
+        
+        <input
+          id="username"
+          name="username"
+          type="text"
+          placeholder="Username"
+          required
+          value={userName}
+           onChange={(e)=>setUserName(e.target.userName)}
+        />
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Email"
+          required
+          value={email}
+          onChange={(e)=>setEmail(e.target.email)}
+        />
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Password"
+          required
+          value={password}
+          onChange={(e)=>setPassword(e.target.password)}
+        />
+      </div>
+      <div id="subbtn">
+        <button className="btn-submit-form" type="submit">
+          Sign up
+        </button>
+      </div>
+    </form>
+  );
+};
+
+export default SignUpForm;

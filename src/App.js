@@ -12,17 +12,25 @@ import Home from "./pages/Home";
 import EditorPage from "./pages/EditorPage";
 import ZcoderBase from "./pages/ZcoderBase";
 import BookmarkForm from "./pages/BookmarkForm";
-import Login from "./components/LoginPage/Login";
+//import Login from "./components/LoginPage/Login";
+import Profile from "./components/Profile/Profile";
+
+import SignIn from "./components/LoginPage/SignIn";
+import SignUp from "./components/LoginPage/SignUp";
+
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
-        <Route path="login" element={<Login/>}/>
+        {/* <Route path="/login" element={<Login />} /> */}
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/home*" element={<ZcoderBase />}>
           <Route path="bookmark" element={<Bookmarks />} />
           <Route path="bookmarkform" element={<BookmarkForm />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
 
 

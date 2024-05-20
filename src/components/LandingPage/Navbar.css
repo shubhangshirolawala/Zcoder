@@ -27,7 +27,7 @@
 .Logo{
     margin-top: 120px;
 }
-.btn1{
+.btnget{
     width: 200px;
     height: 52px;
     background-color: #46319C;
@@ -36,7 +36,7 @@
     border-color: #46319C;
     margin: 30px;
 }
-.btn2{
+.btnlog{
     width: 200px;
     height: 52px;
     background-color: #FFFFFF;
