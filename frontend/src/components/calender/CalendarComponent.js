@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import axios from "axios";
+import "./CalendarComponent.css"; // Import the CSS file
 
 const CalendarComponent = () => {
   const [events, setEvents] = useState([]);
@@ -25,11 +26,13 @@ const CalendarComponent = () => {
   }, []);
 
   return (
-    <FullCalendar
-      plugins={[dayGridPlugin]}
-      initialView="dayGridMonth"
-      events={events}
-    />
+    <div className="calendar-container">
+      <FullCalendar
+        plugins={[dayGridPlugin]}
+        initialView="dayGridMonth"
+        events={events}
+      />
+    </div>
   );
 };
 

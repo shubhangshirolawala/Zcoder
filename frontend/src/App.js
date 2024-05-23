@@ -41,7 +41,15 @@ function App() {
         />
         <Route path="/bookmarkform" element={<BookmarkForm />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/calender" element={<CalendarComponent />} />
+        <Route
+          path="/calender"
+          element={
+            <>
+              <Header />
+              <CalendarComponent />
+            </>
+          }
+        />
         <Route path="/addcontest" element={<AddContestForm />} />
         <Route path="/reminder" element={<ReminderForm />} />
         {/* Add other routes as needed */}

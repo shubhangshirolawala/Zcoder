@@ -1,9 +1,7 @@
 /* src/BookmarkForm.css */
-* {
+.bookmark-form {
   font-family: Raleway;
   color: #46319c;
-}
-.bookmark-form {
   max-width: 600px;
   margin: 50px auto;
   padding: 20px;
