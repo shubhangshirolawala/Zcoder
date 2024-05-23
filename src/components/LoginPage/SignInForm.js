@@ -7,7 +7,8 @@ const SignInForm = () => {
     const [password, setPassword] = useState('');
     // const [userName, setUserName] = useState('');
     const navigate = useNavigate();
-  
+    const token= localStorage.getItem('token')
+    // console.log(token);
     // localStorage.removeItem('token')
   
 //   const Onclickhandler = ()=>{
@@ -22,7 +23,8 @@ const SignInForm = () => {
         const response = await fetch('http://localhost:4000/api/v1/auth/login', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            //  'Authorization': `Bearer ${token}`
           },
           body: JSON.stringify({ userName, password })
         });
@@ -30,6 +32,7 @@ const SignInForm = () => {
         if (!response.ok) {
           throw new Error('Login failed');
         }
+        
        const data=await response.json();
         // Handle successful login
         console.log('Login successful');

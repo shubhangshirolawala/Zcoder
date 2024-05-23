@@ -1,7 +1,12 @@
 import React from 'react'
 import logo from "../../assets/images/zcoderlogo.jpg"
 import "./Header.css"
+import { useNavigate } from 'react-router-dom'
 const Header = () => {
+  const navigate=useNavigate();
+  const click=()=>{
+    navigate('/');
+  }
   return (
     <header className="header">
     <div className="div1 ">
@@ -11,7 +16,7 @@ const Header = () => {
 
    <div className="navbar">
    <div><p className="contact ">Contact</p></div>
-   <div> <p className="lo">Log Out</p></div>
+   <div> <p className="lo" onClick={click}>Log Out</p></div>
     
    </div>
    </header>

@@ -17,6 +17,7 @@ const Bookmarks = () => {
       Authorization:`Bearer ${token}`
     }
   }
+  
   const fetchBookmark = async()=>{
     let res =await axios.post("http://localhost:4000/api/v1/questions/getAllBookmarks",{},config);
     console.log(res)

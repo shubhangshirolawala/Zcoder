@@ -19,6 +19,7 @@ import SignIn from "./components/LoginPage/SignIn";
 import SignUp from "./components/LoginPage/SignUp";
 import Home from "./Rooms/pages/Home"
 import EditorPage from "./Rooms/pages/EditorPage"
+import CalendarComponent from "./components/calender/CalenderComponent";
 
 function App() {
   return (
@@ -32,7 +33,8 @@ function App() {
           <Route path="bookmark" element={<Bookmarks />} />
           <Route path="bookmarkform" element={<BookmarkForm />} />
           <Route path="profile" element={<Profile />} />
-        </Route>
+          <Route path="calendar" element={<CalendarComponent />} />
+                 </Route>
 
 
         <Route path="/rooms" element={<Home />} />

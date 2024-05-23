@@ -25,9 +25,15 @@ const SignUpForm = () => {
         if (!response.ok) {
           throw new Error('Registration failed');
         }
-  
-        navigate('/signin');
+        const data=await response.json();
+          console.log(data);
+        localStorage.setItem('token', data.token)
+       
         console.log('Registration successful');
+        navigate('/signin');
+        //console.log(data.token)
+
+
       } catch (error) {
         console.error('Error during registration:', error.message);
       }
@@ -43,7 +49,7 @@ const SignUpForm = () => {
           placeholder="Username"
           required
           value={userName}
-           onChange={(e)=>setUserName(e.target.userName)}
+           onChange={(e)=>setUserName(e.target.value)}
         />
         <input
           id="email"
@@ -52,7 +58,7 @@ const SignUpForm = () => {
           placeholder="Email"
           required
           value={email}
-          onChange={(e)=>setEmail(e.target.email)}
+          onChange={(e)=>setEmail(e.target.value)}
         />
         <input
           id="password"
@@ -61,7 +67,7 @@ const SignUpForm = () => {
           placeholder="Password"
           required
           value={password}
-          onChange={(e)=>setPassword(e.target.password)}
+          onChange={(e)=>setPassword(e.target.value)}
         />
       </div>
       <div id="subbtn">

@@ -21,7 +21,9 @@
     "socket.io-client": "^4.7.5",
     "styled-components": "^6.1.11",
     "uuid": "^9.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@fullcalendar/daygrid": "^6.1.11",
+    "@fullcalendar/react": "^6.1.11"
   },
   "scripts": {
     "start": "react-scripts start",

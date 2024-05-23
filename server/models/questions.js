@@ -22,7 +22,7 @@ const QuestionSchema = new mongoose.Schema(
     },
     Author: {
       type: String,
-      required: [false, "Please Provide User"],
+      required: [true, "Please Provide User"],
     },
   },
   { timestamps: true }

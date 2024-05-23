@@ -8,11 +8,19 @@ const getUser = async (req, res) => {
   const {
     user: { userName },
   } = req;
-  const userData = await User.findOne({ userName });
-  if (!userData) {
-    res.status(404).json({ msg: `No user found: ${userName}` });
+
+  try {
+    const userData = await User.findOne({ userName: userName });
+
+    if (!userData) {
+      return res.status(404).json({ msg: `No user found: ${userName}` });
+    }
+
+    return res.status(200).json({ userData });
+  } catch (err) {
+    console.error("Error retrieving user data:", err);
+    return res.status(500).json({ msg: "Internal server error" });
   }
-  res.status(200).json({ userData });
 };
 
 const getOtherUser = async (req, res) => {

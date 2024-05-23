@@ -7,16 +7,16 @@ const BookmarkForm = () => {
   const [solution, setSolution] = useState("");
   const navigate = useNavigate();
 
-
+  const token= localStorage.getItem('token')
   const config={
     headers:{
-      Authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjQ5MTIxMzk1MDQ4NTI3MjhjNDVhZTAiLCJpYXQiOjE3MTYwNjQ3ODgsImV4cCI6MTcxODY1Njc4OH0.IbwRoritZW1QjxzM5JztNeZK_V3VxpkToq5NXsP8VFU'
+      Authorization:`Bearer ${token}` 
     }
   }
 
 
   const HandleButtonClick = () => {
-    navigate("/bookmark");
+    navigate("/home/bookmark");
   };
 
 
@@ -28,7 +28,7 @@ const BookmarkForm = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjQ5MTIxMzk1MDQ4NTI3MjhjNDVhZTAiLCJpYXQiOjE3MTYwNjQ3ODgsImV4cCI6MTcxODY1Njc4OH0.IbwRoritZW1QjxzM5JztNeZK_V3VxpkToq5NXsP8VFU'
+          Authorization:`Bearer ${token}` 
         },
         body: JSON.stringify({ title, url, solution })
       });

@@ -30,6 +30,7 @@ const login = async (req, res) => {
     }
     // compare password
     const token = user.createJWT()
+    
     res.status(StatusCodes.OK).json({ user: { userName: user.userName }, token })
 } 
 

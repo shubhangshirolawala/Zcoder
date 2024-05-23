@@ -1,0 +1,60 @@
+.calendar-container {
+    font-family: Raleway !important;
+    color: #46319c;
+  }
+  .fc-toolbar-title {
+    font-size: 3rem !important;
+  }
+  .fc .fc-col-header-cell-cushion {
+    font-size: x-large;
+    padding: 10px 4px;
+  }
+  .fc-col-header-cell {
+    height: 40px;
+    /* background-color: #46319c; */
+    color:#ffffff !important;
+  }
+  .fc-daygrid-event-dot {
+    border: solid #46319c;
+  }
+  .fc-media-screen {
+    margin: 2% 10% 10% 10%;
+  }
+  .fc-daygrid-day-events {
+    display: flex;
+    flex-direction: column;
+    min-height: 80px !important;
+    width: 100%;
+    padding: 6px;
+  }
+  .fc-button {
+    border: 0 !important;
+    border-radius: 0% !important;
+    background-color: white !important; 
+  }
+  .fc-today-button {
+    background-color: #46319c !important;
+    opacity: 1 !important;
+    opacity: 0.9 !important;
+  }
+  .fc-today-button::first-letter {
+    text-transform: uppercase !important;
+  }
+  .fc-today-button:hover {
+    opacity: 1 !important;
+  }
+  
+  .fc-event {
+    display: flex;
+  
+    flex-wrap: wrap;
+  }
+  .fc-event-time {
+    font-size: 120%;
+    font-weight: 600;
+  }
+  .fc-event-title {
+    font-size: 120%;
+    width: 80%;
+    text-wrap: wrap;
+  }
