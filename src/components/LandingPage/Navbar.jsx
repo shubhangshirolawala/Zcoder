@@ -19,8 +19,8 @@ return(
     </div>
 
    <nav className="navbar">
-   <button className="btnget" onClick={get}>Get Started</button>
-   <button className="btnlog" onClick={log}>Log In</button>
+   <button className="btn1" onClick={get}>  Get Started  </button>
+   <button className="btn2" onClick={log}>  Log In  </button>
     
    </nav>
    </header>

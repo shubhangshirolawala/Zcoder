@@ -1,7 +1,7 @@
 import React from 'react'
 import Avatar from 'react-avatar';
 
-const Client = ({username}) => {
+const client = ({username}) => {
   return (
     <div className="client">
         <Avatar name={username} size={50} round="14px"/>
@@ -10,4 +10,4 @@ const Client = ({username}) => {
   )
 }
 
-export default Client
+export default client

@@ -35,11 +35,12 @@ const SignInForm = () => {
         console.log('Login successful');
   
      
-        console.log(data);
-        // console.log(token)
+      //  console.log(data);
+       //  console.log(data.token)
+       
         localStorage.setItem('token', data.token)
         
-        navigate('/home')
+        navigate('/home/bookmark')
   
       } catch (error) {
         console.error('Error during login:', error.message);

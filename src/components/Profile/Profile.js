@@ -17,9 +17,30 @@ const Profile = () => {
   //   }, []);
 
   //   if (!profile) return <div>Loading...</div>;
-  
+     const token= localStorage.getItem('token')
+   
+   // console.log(token);
+    // const {users,setUsers}=useState("");
+
+    // const config={
+    //   headers:{
+    //     Authorization:`Bearer ${token}`
+    //   }
+    // }
+    // const fetchProfile = async()=>{
+    //   let res =await axios.post("http://localhost:4000/api/v1/questions/login",{},config);
+    //   console.log(res)
+      
+    //     // setUsers(res.data.bookmarks)
+      
+    //   console.log(users)
+    // }
+    // useEffect(()=>{
+    //   fetchProfile()
+    // },[])
+
   const profile = {
-    name: "Aditi Yogesh",
+   
     username: "aditi_03",
     college: "Indian Institute of Technology, Guwahati",
     image: "https://via.placeholder.com/150", // Placeholder image URL

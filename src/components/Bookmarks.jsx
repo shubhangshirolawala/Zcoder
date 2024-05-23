@@ -10,9 +10,11 @@ const Bookmarks = () => {
   };
   const [users,setUsers]=useState([]);
 
+  const token=localStorage.getItem('token')
+  console.log(token);
   const config={
     headers:{
-      Authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjQ5MTIxMzk1MDQ4NTI3MjhjNDVhZTAiLCJpYXQiOjE3MTYwNjQ3ODgsImV4cCI6MTcxODY1Njc4OH0.IbwRoritZW1QjxzM5JztNeZK_V3VxpkToq5NXsP8VFU'
+      Authorization:`Bearer ${token}`
     }
   }
   const fetchBookmark = async()=>{
@@ -30,7 +32,7 @@ const Bookmarks = () => {
     
     <div className="main">
     <div className='book '>
-         <button className="btn1" onClick={handleButtonClick}>Add A Bookmark</button>
+         <button className="btn1 " onClick={handleButtonClick}>Add A Bookmark</button>
        
             <div className=" class ">
               <div className='subclass'>

@@ -3,8 +3,8 @@ import { v4 as uuidV4 } from 'uuid';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-
-
+import { Toaster } from 'react-hot-toast';
+import logo from "../../assets/images/Zcoderlogo.svg"
 
 const Home = () => {
     const [roomId,setRoomId]=useState('');
@@ -14,9 +14,10 @@ const Home = () => {
     const createNewRoom = (e) => {
         e.preventDefault();
         const id=uuidV4();
-        // console.log(id);
+          console.log(id);
         setRoomId(id);
-        toast.success('Created a new room')
+         toast.success('Created a new room')
+        //  toast.success("please work")
     };
 
     const joinRoom = () => {
@@ -26,6 +27,7 @@ const Home = () => {
         }
 
         //for redirection and second term is for data paasng to one page to another page 
+        console.log(roomId);
         navigate(`/editor/${roomId}`, {
             state:{
                 username,
@@ -35,10 +37,18 @@ const Home = () => {
     };
 
   return (
+            
+    <div>
+      <div>
+      <Toaster 
+      position="top-right"
+      ></Toaster>
+    </div>
+    
     <div className="homePageWrapper">
         <div>
-        < img src="/ZCODERLOGO.png" alt="Logo" width="100" height="96" className="homePageLogo"/>
-        <h1 className="coder">Coder</h1>
+        < img src={logo} alt="Logo" width="200" height="96" className="homePageLogo"/>
+        {/* <h1 className="coder">Coder</h1> */}
         </div>
         <div className="formWrapper">
             <h1 className="roomLable">Rooms</h1>
@@ -77,6 +87,7 @@ const Home = () => {
             
         </div>
         </div>
+    </div>
     </div>
   )
 }

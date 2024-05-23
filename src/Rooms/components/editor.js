@@ -6,7 +6,7 @@ import 'codemirror/theme/mdn-like.css';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/addon/edit/closetag';
 import 'codemirror/addon/edit/closebrackets';
-import ACTIONS from '../Rooms/Actions';
+import ACTIONS from '../Actions';
 
 
 const Editor = ({ socketRef, roomId, onCodeChange }) => {
