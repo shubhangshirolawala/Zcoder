@@ -6,7 +6,7 @@ import Editor from '../components/editor'
 import { initSocket } from '../socket';
 import { useLocation , useNavigate , Navigate , useParams} from 'react-router-dom';
 import ACTIONS from '../Actions';
-
+import logo from "../../assets/images/Zcoderlogo.svg"
 
 const EditorPage = () => {
   // const init="hello"
@@ -55,19 +55,20 @@ const EditorPage = () => {
         const handleErrors = (error) => {
             console.error('socket error', error);
             toast.error('Socket connection failed, try again later.');
-            reactNavigator('/');
+            reactNavigator('/rooms');
         };
 
         init();
 
         return () => {
             if (socketRef.current) {
+                console.log("socketref is not null");
                 socketRef.current.disconnect();
                 socketRef.current.off(ACTIONS.JOINED);
                 socketRef.current.off(ACTIONS.DISCONNECTED);
             }
         };
-    }, [location.state, reactNavigator, roomId]);
+    }, [location.state?.username, reactNavigator, roomId]);
 
     const copyRoomId = async () => {
         try {
@@ -92,8 +93,8 @@ const EditorPage = () => {
             <div className="aside">
                 <div className="asideInner">
                     <div className="logo">
-                        <img src="/ZCODERLOGO.png" alt="Logo" width="100" height="96" className="logoImage" />
-                        <h1 className="coder">Coder</h1>
+                        <img src={logo} alt="Logo" width="100" height="96" className="logoImage" />
+                        {/* <h1 className="coder">Coder</h1> */}
                     </div>
                     <h3 className="roomMembers">Room Members</h3>
                     <div className="clientList">
