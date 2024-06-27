@@ -71,17 +71,19 @@ const EditorPage = () => {
     }, [location.state?.username, reactNavigator, roomId]);
 
     const copyRoomId = async () => {
+        
         try {
-            await navigator.clipboard.writeText(roomId);
             toast.success('Room ID has been copied to your clipboard');
+            await navigator.clipboard.writeText(roomId);
         } catch (err) {
             toast.error('Could not copy the Room ID');
             console.error(err);
         }
+        console.log("copied")
     };
 
     const leaveRoom = () => {
-        reactNavigator('/');
+        reactNavigator('/home/bookmark');
     };
 
     if (!location.state) {

@@ -10,7 +10,7 @@ const CalendarComponent = () => {
   useEffect(() => {
     const fetchContests = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/contests");
+        const response = await axios.get("http://localhost:4000/api/contests");
         const contests = response.data.map((contest) => ({
           title: contest.name,
           start: contest.start_time,

@@ -69,12 +69,14 @@ const SignUpForm = () => {
           value={password}
           onChange={(e)=>setPassword(e.target.value)}
         />
+        
       </div>
       <div id="subbtn">
         <button className="btn-submit-form" type="submit">
           Sign up
         </button>
       </div>
+      
     </form>
   );
 };
