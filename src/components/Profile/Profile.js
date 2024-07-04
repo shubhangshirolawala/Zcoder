@@ -29,7 +29,7 @@ const [data,setData]= useState([]);
     }
     const fetchProfile = async()=>{
       let res =await axios.get("http://localhost:4000/api/v1/user/getUser",config);
-      console.log(res)
+      // console.log(res)
       setData(res.data.userData)
         // setUsers(res.data.bookmarks)
       
@@ -41,19 +41,21 @@ const [data,setData]= useState([]);
 
   const profile = {
     college:"Indian Institue Of Technology",
+    email:data.email,
     username: data.userName,
     name: data.name,
-    image: "https://via.placeholder.com/150", // Placeholder image URL
+    image: data.avatar, // Placeholder image URL
   };
+  console.log(profile)
   return (
     <div className="profile-container">
       <div className="profile-header">
-        <img src={profile.image} alt="Profile" className="profile-image" />
+        <img src={`http://localhost:4000/${data.avatar}`} alt="Profile" className="profile-image" />
         <div className="profile-info">
-          {/* <p>
-            <strong>Name:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {profile.name}
-          </p> */}
+          <p>
+            <strong>Email:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {profile.email}
+          </p>
           <p>
             <strong>Username:</strong>&nbsp;&nbsp;&nbsp;{profile.username}
           </p>
