@@ -5,9 +5,9 @@ It also has various other features such as coding rooms with built in code edito
 
 ## Tech Stack
 
-- **Client** React JS, Tailwind CSS and HTML
-- **Server** Node Js , Express JS
-- **Database** MongoDB
+- **Client** : React JS, Tailwind CSS and HTML
+- **Server** : Node Js , Express JS
+- **Database** : MongoDB
 
 ## Features and Preview
 
@@ -16,12 +16,15 @@ It also has various other features such as coding rooms with built in code edito
    ![Screenshot (80)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/c962e97a-a26b-4c4a-b939-9b232caef726)
 
 2. Sign Up Page
+ 
 ![Screenshot (81)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/73f2dd4c-6256-4355-8c2b-492124f05715)
 
 3. BookMarks
+
  ![Screenshot (83)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/27e7a797-8683-4a06-bce1-982f5de62f43)
 
 4. Adding BookMarks
+
    ![Screenshot (82)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/fdccc428-3a76-4fcf-b043-d524c525da73)
 
 5. Coding Rooms
@@ -29,9 +32,11 @@ It also has various other features such as coding rooms with built in code edito
 ![Screenshot (84)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/1f279c46-99ab-4b33-8fc7-7b3943c5c45c)
 
 6. Real Time Code Editing
+   
 ![Screenshot (85)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/4f77dd2a-baa7-4f7d-8b63-53d7e43d35b3)
 
 7.Calender Page
+
 ![Screenshot (86)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/c74f91f6-fcf2-4b6f-b724-f4837c323608)
 
 8. Profile Page
