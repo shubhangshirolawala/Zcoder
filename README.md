@@ -1,15 +1,15 @@
-#ZCODER
+# ZCODER
 
 Zcoder is a Web Application that allows users to bookmark their coding problems along with their solutions for future reference.
 It also has various other features such as coding rooms with built in code editor which allow uses to dicsuss their solutions in real time, calenders which show upcoming contests on CodeForces and a Profile Page.
 
-##Tech Stack
+## Tech Stack
 
 **Client** React JS, Tailwind CSS and HTML
 **Server** Node Js , Express JS
 **Database** MongoDB
 
-##Features and Preview
+## Features and Preview
 
 1. Landing Page
 
@@ -38,8 +38,36 @@ It also has various other features such as coding rooms with built in code edito
    
 ![Screenshot (87)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/6164fd58-db3b-479f-9860-29993f646171)
 
-##Project Setup
+## Project Setup
 
 1. Clone the Repository
   ```bash
-git clone
+git clone https://github.com/shubhangshirolawala/Zcoder.git
+
+```
+2. Install the necessary dependancies
+   ``` bash
+   npm install
+   cd server
+   npm install
+   ```
+3. Run the Server
+   ``` bash
+   cd server
+   npm start
+   ```
+4. Run the Rooms Server
+   ``` bash
+   cd Zcoder
+   node server.js
+   ```
+5. Run the Application
+   ``` bash
+   cd src
+   npm start
+   ```
+
+## License
+This project is licensed under the MIT License. See the [LICNESE](LICENSE) for details.
+   
+   
