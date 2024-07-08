@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+#ZCODER
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Zcoder is a Web Application that allows users to bookmark their coding problems along with their solutions for future reference.
+It also has various other features such as coding rooms with built in code editor which allow uses to dicsuss their solutions in real time, calenders which show upcoming contests on CodeForces and a Profile Page.
 
-## Available Scripts
+##Tech Stack
 
-In the project directory, you can run:
+**Client** React JS, Tailwind CSS and HTML
+**Server** Node Js , Express JS
+**Database** MongoDB
 
-### `npm start`
+##Features and Preview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Landing Page
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   ![Screenshot (80)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/c962e97a-a26b-4c4a-b939-9b232caef726)
 
-### `npm test`
+2. Sign Up Page
+![Screenshot (81)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/73f2dd4c-6256-4355-8c2b-492124f05715)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. BookMarks
+ ![Screenshot (83)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/27e7a797-8683-4a06-bce1-982f5de62f43)
 
-### `npm run build`
+4. Adding BookMarks
+   ![Screenshot (82)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/fdccc428-3a76-4fcf-b043-d524c525da73)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. Coding Rooms
+   
+![Screenshot (84)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/1f279c46-99ab-4b33-8fc7-7b3943c5c45c)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+6. Real Time Code Editing
+![Screenshot (85)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/4f77dd2a-baa7-4f7d-8b63-53d7e43d35b3)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+7.Calender Page
+![Screenshot (86)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/c74f91f6-fcf2-4b6f-b724-f4837c323608)
 
-### `npm run eject`
+8. Profile Page
+   
+![Screenshot (87)](https://github.com/shubhangshirolawala/Zcoder/assets/158447779/6164fd58-db3b-479f-9860-29993f646171)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+##Project Setup
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clone the Repository
+  ```bash
+git clone
