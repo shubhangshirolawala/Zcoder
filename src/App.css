@@ -188,8 +188,8 @@
     text-align: center;
   }
   
-  .editorWrap{
-    height: 100vh;
+  .editorWrap .CodeMirror{
+  height: 100% !important; 
   }
   
   
@@ -205,3 +205,38 @@
   .userName {
     margin-top: 4px;
   }
+
+  .videoRibbon {
+  scrollbar-width: thin;
+  scrollbar-color: #6b46c1 #2d2d2d;
+}
+
+.videoRibbon::-webkit-scrollbar {
+  height: 10px;
+}
+
+.videoRibbon::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border-radius: 10px;
+}
+
+.videoRibbon::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #ff0080, #7928ca, #2af598);
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+.videoRibbon::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ff512f, #dd2476, #24c6dc);
+}
+
+/* 📱 On mobile - scrollbar thinner and neon style */
+@media (max-width: 768px) {
+  .videoRibbon::-webkit-scrollbar {
+    height: 6px;
+  }
+  .videoRibbon::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #00f260, #0575e6);
+    box-shadow: 0 0 6px rgba(0, 242, 96, 0.8);
+  }
+}
