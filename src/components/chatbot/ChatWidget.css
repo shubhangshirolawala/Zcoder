@@ -1,0 +1,49 @@
+.zcoder-chatbot-fab {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #1a1a2e;
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.zcoder-chatbot-fab:hover {
+  background: #222260;
+}
+.zcoder-chatbot-popup {
+  position: fixed;
+  bottom: 100px;
+  right: 32px;
+  z-index: 1002;
+  background: transparent;
+}
+.zcoder-chatbot-close {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #1a1a2e;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1003;
+}
+.zcoder-chatbot-popup .zcoder-chat-container {
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  border-radius: 16px;
+  min-width: 340px;
+  max-width: 400px;
+  min-height: 420px;
+  background: #fff;
+  position: relative;
+}

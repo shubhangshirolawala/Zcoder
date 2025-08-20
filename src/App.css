@@ -159,6 +159,14 @@
     margin-bottom: 20px;
     margin-top: 10px; 
   }
+  .compileBtn{
+    background-color: green;
+    color: #ffffff;
+    width:80%;
+    margin:0 auto;
+    margin-bottom: 20px;
+    margin-top: 10px; 
+  }
   
   .leaveBtn:hover{
     background-color: #7b2323;

@@ -1,0 +1,122 @@
+/* Code block inside chat AI response */
+.zcoder-chat-msg-assistant pre,
+.zcoder-chat-msg-system pre {
+  background: #3a2170;
+  color: #fff;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.98rem;
+  margin: 10px 0;
+  overflow-x: auto;
+}
+.zcoder-chat-msg-assistant code,
+.zcoder-chat-msg-system code {
+  color: #fff;
+  background: none;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+  font-size: 0.98rem;
+}
+.zcoder-chat-container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 16px;
+  /* box-shadow: 0 4px 20px rgba(108, 60, 196, 0.15); */
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  border: 1px solid #f0f0f5;
+}
+
+.zcoder-chat-header {
+  background: #46319C;
+  color: #ffffff;
+  padding: 18px;
+  font-size: 1.3rem;
+  border-radius: 16px 16px 0 0;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.zcoder-chat-messages {
+  flex: 1;
+  padding: 18px;
+  overflow-y: auto;
+  background: #fafafa;
+}
+
+
+.zcoder-chat-msg {
+  margin-bottom: 14px;
+  padding: 12px 22px;
+  border-radius: 18px;
+  max-width: 96%;
+  word-break: break-word;
+  font-size: 1rem;
+  line-height: 1.4;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.zcoder-chat-msg-user {
+  background: #ff69b4; /* light pink */
+  color: #fff;
+  align-self: flex-end;
+}
+
+.zcoder-chat-msg-assistant {
+  background: #6c3cc4; /* main purple */
+  color: #fff;
+  align-self: flex-start;
+}
+
+.zcoder-chat-msg-system {
+  background: #6c3cc4;
+  color: #fff;
+  align-self: flex-start;
+}
+
+.zcoder-chat-form {
+  display: flex;
+  border-top: 1px solid #eee;
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 0 0 16px 16px;
+}
+
+.zcoder-chat-form input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-right: 10px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.zcoder-chat-form input:focus {
+  border-color: #6c3cc4;
+  box-shadow: 0 0 0 2px rgba(108, 60, 196, 0.15);
+}
+
+.zcoder-chat-form button {
+  background: #6c3cc4;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.zcoder-chat-form button:hover:not(:disabled) {
+  background: #7b2cbf;
+  transform: translateY(-1px);
+}
+
+.zcoder-chat-form button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
