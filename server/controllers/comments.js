@@ -17,7 +17,7 @@ const createComment = async (req, res) => {
     user: { userName },
     // params: { id: jobId },
   } = req;
-  const { id: questionID } = req.params;
+  // const { id: questionID } = req.params;
   const comment = await Comment.create({
     ...req.body,
     Author: userName,

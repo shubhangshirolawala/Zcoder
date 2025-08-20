@@ -85,6 +85,7 @@ const EditorPage = () => {
     const leaveRoom = () => {
         reactNavigator('/home/bookmark');
     };
+     
 
     if (!location.state) {
         return <Navigate to="/" />;
@@ -107,6 +108,7 @@ const EditorPage = () => {
                 </div>
                 <button className="btn copyBtn" onClick={copyRoomId}>Copy ROOM ID</button>
                 <button className="btn leaveBtn" onClick={leaveRoom}>Leave</button>
+                  {/* <button className="btn compileBtn" onClick={compileCode}>Compile</button> */}
             </div>
             <div className="editorWrap">
                 <Editor

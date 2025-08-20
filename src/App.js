@@ -1,3 +1,4 @@
+import ChatWidget from "./components/chatbot/ChatWidget";
 import "./App.css";
 // import Main from './components/Main';
 // import Navbar from './components/Navbar';
@@ -34,12 +35,15 @@ function App() {
           <Route path="bookmarkform" element={<BookmarkForm />} />
           <Route path="profile" element={<Profile />} />
           <Route path="calendar" element={<CalendarComponent />} />
+         
                  </Route>
 
 
         <Route path="/rooms" element={<Home />} />
         <Route path="/editor/:roomId" element={<EditorPage />} />
       </Routes>
+
+      <ChatWidget />
     </BrowserRouter>
   );
 }

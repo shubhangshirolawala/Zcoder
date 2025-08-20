@@ -38,7 +38,7 @@ const scheduleReminder = async (req, res) => {
     // Get reminder details from request body
     const { email, contestName, startTime, reminderTime } = req.body;
 
-    // Implement logic to schedule reminder (similar to previous implementation)
+    
 
     res.json({ message: "Reminder scheduled" });
   } catch (error) {
