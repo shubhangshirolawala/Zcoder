@@ -45,9 +45,9 @@ const deleteBookmark = async (req, res, next) => {console.log("andar")
   const { id } = req.params;
   console.log(id);
   const {
-    user: { userName },
+    user: { userId },
   } = req;
-  const bookmark = await Question.findOneAndDelete({ _id: id, Author: userName });
+  const bookmark = await Question.findOneAndDelete({ _id: id, Author: userId });
   if (!bookmark) {
     return res.status(404).json({ msg: `No bookmark with id : ${id}` });
   }
