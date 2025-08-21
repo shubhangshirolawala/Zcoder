@@ -1,9 +1,21 @@
 .btn1{
 
     margin-left: 30px;
+    margin-top: 24px;
     height: 50px;
     cursor: pointer;
-    
+    font-family: Raleway, sans-serif;
+    font-size: 1.08rem;
+    color: #fff;
+    background: #6c3cc4;
+    border: none;
+    border-radius: 8px;
+    padding: 0 24px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.btn1:hover {
+  background: #46319c;
 }
 .main{
     width: 100%;
@@ -46,12 +58,40 @@
   }
   
   /* Ensure table cells occupy full width */
-  .table th,
-  .table td {
-    width: 400px; /* Distribute evenly among three columns */
-    /* box-sizing: border-box;  */
-    padding: 8px;
-    text-align: center;
-    color: #46319C;
-  
-  }
+  .table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  width: 400px;
+  padding: 8px;
+  text-align: center;
+  font-family: Raleway, sans-serif;
+  font-size: 1.08rem;
+  border: none;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  color: #6c3cc4;
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+.table tbody tr {
+  background-color: #f7f5fa;
+  border-bottom: 2px solid #e5d6fa;
+  transition: background 0.2s;
+  color: #46319C;
+}
+
+.table tbody tr:hover {
+  background-color: #ede7fa;
+}
+
+.main, .book, .class, .subclass, .table, .profile-container, .profile-header, .profile-info, .profile-info p, .friends-container, .friends-header, .friends-list, .friend-item, .friend-info, .friend-name, .friend-email {
+  font-family: Raleway, sans-serif !important;
+  font-size: 1.08rem !important;
+}

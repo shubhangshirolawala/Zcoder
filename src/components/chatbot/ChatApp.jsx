@@ -13,7 +13,9 @@ function ChatMessage({ content }) {
   let key = 0;
   while ((match = codeBlockRegex.exec(content)) !== null) {
     if (match.index > lastIndex) {
-      parts.push(<span key={key++}>{content.slice(lastIndex, match.index)}</span>);
+      parts.push(
+        <span key={key++}>{linkify(content.slice(lastIndex, match.index))}</span>
+      );
     }
     parts.push(
       <pre key={key++} style={{ background: '#222', color: '#fff', padding: 10, borderRadius: 6, overflowX: 'auto', margin: '8px 0' }}>
@@ -23,9 +25,34 @@ function ChatMessage({ content }) {
     lastIndex = codeBlockRegex.lastIndex;
   }
   if (lastIndex < content.length) {
-    parts.push(<span key={key++}>{content.slice(lastIndex)}</span>);
+    parts.push(<span key={key++}>{linkify(content.slice(lastIndex))}</span>);
   }
   return <>{parts}</>;
+}
+
+// Helper to convert URLs to clickable links
+function linkify(text) {
+  if (!text) return null;
+  const urlRegex = /(https?:\/\/[\w\-._~:/?#[\]@!$&'()*+,;=%]+)|(www\.[\w\-._~:/?#[\]@!$&'()*+,;=%]+)/gi;
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+  let key = 0;
+  while ((match = urlRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    let url = match[0];
+    if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+    parts.push(
+      <a key={key++} href={url} target="_blank" rel="noopener noreferrer" style={{ color: '#ff69b4', textDecoration: 'underline', wordBreak: 'break-all' }}>{match[0]}</a>
+    );
+    lastIndex = urlRegex.lastIndex;
+  }
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+  return parts;
 }
 
 const ChatApp = () => {

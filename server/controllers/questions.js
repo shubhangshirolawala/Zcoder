@@ -3,10 +3,10 @@ const { BadRequestError, NotFoundError } = require("../errors");
 
 const createQuestion = async (req, res) => {
   const {
-    user: { userName },
+    user: { userId },
     // params: { id: jobId },
   } = req;
-  const question = await Question.create({ ...req.body, Author: userName });
+  const question = await Question.create({ ...req.body, Author: userId });
   res.status(201).json({ question });
 };
 
@@ -17,29 +17,42 @@ const getAllQuestions = async (req, res) => {
 
 const getAllBookmarks = async (req, res, next) => {
   // const { id: taskID } = req.params;
-  const {
-    user: { userName },
-    // params: { id: jobId },
-  } = req;
-  const bookmarks = await Question.find({ Author: userName });
+  let userId;
+
+    if (req.params.userId) {
+      //if passed as params and want users bookmarks
+      userId = req.params.userId;
+      
+    } else {
+      //or no params passed so current users bookmarks
+      userId = req.user.userId;
+    }
+
+    console.log("userId", userId);
+
+  const bookmarks = await Question.find({ Author: userId });
+  // console.log(bookmarks);
   if (!bookmarks) {
-    return res.status(404).json({ msg: `No bookmarks created : ${userName}` });
+    return res.status(404).json({ msg: `No bookmarks created : ${userId}` });
   }
 
   res.status(200).json({ bookmarks });
 };
-// const deleteTask = async (req, res, next) => {
-//   const { id: taskID } = req.params;
-//   const {
-//     user: { userId },
-//     // params: { id: jobId },
-//   } = req;
-//   const task = await Task.findOneAndDelete({ _id: taskID, createdBy: userId });
-//   if (!task) {
-//     return res.status(404).json({ msg: `No task with id : ${taskID}` });
-//   }
-//   res.status(200).json({ task });
-// };
+
+
+
+const deleteBookmark = async (req, res, next) => {console.log("andar")
+  const { id } = req.params;
+  console.log(id);
+  const {
+    user: { userName },
+  } = req;
+  const bookmark = await Question.findOneAndDelete({ _id: id, Author: userName });
+  if (!bookmark) {
+    return res.status(404).json({ msg: `No bookmark with id : ${id}` });
+  }
+  res.status(200).json({ msg: 'Bookmark deleted', bookmark });
+};
 // const updateTask = async (req, res, next) => {
 //   const { id: taskID } = req.params;
 //   const {
@@ -66,5 +79,5 @@ module.exports = {
   getAllBookmarks,
   getAllQuestions,
   createQuestion,
-  //deleteQuestion,
+  deleteBookmark,
 };
