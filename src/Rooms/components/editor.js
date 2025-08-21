@@ -24,6 +24,7 @@ const Editor = ({ socketRef, roomId, onCodeChange }) => {
               }
           );
 
+          
           editorRef.current.on('change', (instance, changes) => {
               const { origin } = changes;
               const code = instance.getValue();
@@ -87,31 +88,59 @@ const Editor = ({ socketRef, roomId, onCodeChange }) => {
     console.log(output);
         };
 
-    return (
-        <div style={{ width: '100%' }}>
-            <textarea id="realtimeEditor"></textarea>
-            <button
-                style={{ marginTop: 8, float: 'right', background: 'green', color: '#fff', border: 'none', borderRadius: 4, padding: '6px 18px', fontWeight: 'bold', cursor: 'pointer' }}
-                onClick={compileCode}
-            >
-                Compile
-            </button>
-            <div style={{
-                background: '#181818',
-                color: '#fff',
-                borderRadius: 8,
-                padding: 12,
-                fontFamily: 'monospace',
-                minHeight: 60,
-                marginTop: 12,
-                fontSize: 14,
-                whiteSpace: 'pre-wrap',
-                wordBreak: 'break-word',
-            }}>
-                {output || 'Output will appear here.'}
-            </div>
-        </div>
-    )
+return (
+  <div style={{ width: "100%", height: "70%" }}>
+    <textarea id="realtimeEditor"></textarea>
+
+    <div
+      style={{
+        height: "60%",          // compiler section takes 30% height of page
+        display: "flex",
+        flexDirection: "column",
+        padding: "10px",
+        marginTop: "10px",
+      }}
+    >
+      {/* Compile button at top-right */}
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <button
+          style={{
+            background: "green",
+            color: "#fff",
+            border: "none",
+            borderRadius: 4,
+            padding: "6px 18px",
+            fontWeight: "bold",
+            cursor: "pointer",
+            marginBottom: "8px",
+          }}
+          onClick={compileCode}
+        >
+          Compile
+        </button>
+      </div>
+
+      {/* Output section */}
+      <div
+        style={{
+          flex: 1,
+          background: "#181818",
+          color: "#fff",
+          borderRadius: 8,
+          padding: 12,
+          fontFamily: "monospace",
+          fontSize: 14,
+          whiteSpace: "pre-wrap",
+          wordBreak: "break-word",
+          overflowY: "auto",   // makes output scrollable
+        }}
+      >
+        {output || "Output will appear here."}
+      </div>
+    </div>
+  </div>
+);
+
 }
 
 export default Editor
