@@ -8,7 +8,8 @@ const LowerHeader = () => {
          <p><NavLink to ="/rooms" style={{ textDecoration: 'none'}}>Rooms</NavLink></p>
          <p><NavLink to ="/home/calendar" style={{ textDecoration: 'none'}}>Calendar</NavLink></p>
          <p><NavLink to ="/home/profile" style={{ textDecoration: 'none'}}>Profile</NavLink></p>
-         
+         <p><NavLink to="/home/myFriends" style={{ textDecoration: 'none'}}>My Friends</NavLink></p>
+         {/* <p><NavLink to="/home/myFriends" style={{ textDecoration: 'none'}}>My Friends</NavLink></p> */}
     </div>
   )
 }

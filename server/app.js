@@ -28,7 +28,7 @@ const chatRouter = require("./routes/chat");
 // const contestRoutes = require("./routes/contestRoutes");
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
-const questions = require('./models/questions');
+// const questions = require('./models/questions');
 
 app.use(express.json());
 
@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/questions/',authenticateUser,questionsRouter);
 app.use("/api/v1/comments", authenticateUser, commnetsRouter);
-app.use('/api/v1/user/',authenticateUser,userRouter)
+app.use('/api/v1/user',authenticateUser,userRouter)
 app.use('/api/v1/chat', chatRouter);
 // app.use('/api/v1/patient', authenticateUser, vitalsRouter);
 // app.use('/api/v1/doctor', authenticateUser, doctorRouter);
@@ -53,8 +53,8 @@ app.get("/", (req, res) => {
   res.redirect("/api/contests"); // Redirect to a different route
 });
 
-app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
+app.use(notFoundMiddleware);
 
 // app.use("/api/contests/", contestRoutes);
 // app.get("/", (req, res) => {

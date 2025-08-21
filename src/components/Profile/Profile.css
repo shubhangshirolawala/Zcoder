@@ -13,10 +13,10 @@
     align-items: center;
     background-color: #f8f9fa;
     padding: 20px 100px 20px 60px;
-    /* border-radius: 8px; */
     height: 300px;
     width: 80%;
     box-shadow: 0 0px 20px rgba(0, 0, 0, 0.197);
+    font-family: Raleway, sans-serif;
   }
   
   .profile-image {
@@ -31,10 +31,15 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    font-family: Raleway, sans-serif;
+    font-size: 1.08rem;
+    color: #46319c;
   }
   
   .profile-info p {
     margin: 10px 0;
+    color: #46319c;
+    font-size: 1.08rem;
   }
   
   .profile-separator {
