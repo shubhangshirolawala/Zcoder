@@ -21,6 +21,8 @@ import SignUp from "./components/LoginPage/SignUp";
 import Home from "./Rooms/pages/Home"
 import EditorPage from "./Rooms/pages/EditorPage"
 import CalendarComponent from "./components/calender/CalenderComponent";
+import MyFriends from "./pages/MyFriends";
+import FriendProfile from "./pages/FriendProfile";
 
 function App() {
   return (
@@ -35,12 +37,14 @@ function App() {
           <Route path="bookmarkform" element={<BookmarkForm />} />
           <Route path="profile" element={<Profile />} />
           <Route path="calendar" element={<CalendarComponent />} />
+          <Route path="myFriends" element={<MyFriends />} />
          
                  </Route>
 
 
         <Route path="/rooms" element={<Home />} />
         <Route path="/editor/:roomId" element={<EditorPage />} />
+        <Route path="/friend/:id" element={<FriendProfile />} />
       </Routes>
 
       <ChatWidget />

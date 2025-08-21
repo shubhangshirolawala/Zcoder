@@ -49,6 +49,9 @@ const Bookmarks = () => {
                   <th>
                     Solution
                   </th>
+                  <th>
+                    Action
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -56,10 +59,30 @@ const Bookmarks = () => {
           users.map((data,index)=>(
 
               <tr>
-                
                 <td key={index}>{data.title}</td>
-                <td key={index}>{data.url}</td>
+                <td key={index}>
+                  <a href={data.url} target="_blank" rel="noopener noreferrer" style={{ color: '#6c3cc4', textDecoration: 'underline', wordBreak: 'break-all' }}>
+                    {data.url}
+                  </a>
+                </td>
                 <td key={index}>{data.solution}</td>
+                <td>
+                  <button
+                    style={{ background: '#ff69b4', color: '#fff', border: 'none', borderRadius: 6, padding: '6px 14px', cursor: 'pointer', fontWeight: 'bold' }}
+                    onClick={async () => {
+                      if(window.confirm('Are you sure you want to delete this bookmark?')) {
+                        try {
+                          await axios.delete(`http://localhost:4000/api/v1/questions/deleteBookmark/${data._id}`, config);
+                          setUsers(users.filter(u => u._id !== data._id));
+                        } catch (err) {
+                          alert('Failed to delete bookmark.');
+                        }
+                      }
+                    }}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
 
 

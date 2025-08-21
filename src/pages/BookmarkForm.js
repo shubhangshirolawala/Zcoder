@@ -39,6 +39,7 @@ const BookmarkForm = () => {
 
     //   navigate('/');
       console.log('BookMark Addition successful');
+      navigate("/home/bookmark");
     } catch (error) {
       console.error('Error during BookMark Addition:', error.message);
     }
