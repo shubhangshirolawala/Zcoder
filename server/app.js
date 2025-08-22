@@ -29,6 +29,8 @@ const chatRouter = require("./routes/chat");
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 // const questions = require('./models/questions');
+const friendMessageRoutes = require("./routes/friendMessages");
+
 
 app.use(express.json());
 
@@ -44,6 +46,7 @@ app.use('/api/v1/questions/',authenticateUser,questionsRouter);
 app.use("/api/v1/comments", authenticateUser, commnetsRouter);
 app.use('/api/v1/user',authenticateUser,userRouter)
 app.use('/api/v1/chat', chatRouter);
+app.use("/api", friendMessageRoutes);
 // app.use('/api/v1/patient', authenticateUser, vitalsRouter);
 // app.use('/api/v1/doctor', authenticateUser, doctorRouter);
 

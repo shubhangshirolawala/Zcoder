@@ -1,12 +1,8 @@
-import {io} from 'socket.io-client';
-
-
-export const initSocket = async () =>{
-    const options = {
-        'force new connection':true,
-        reconnectionAttempt:'infinity',
-        timeout:1000,
-        transports:['websocket'],
-    };
-    return io(process.env.REACT_APP_BACKEND_URL,options)
-}
+// socketRoom.js
+import { io } from "socket.io-client";
+export const initRoomSocket = () => {
+  return io("http://localhost:5000", { transports: ["websocket"] });
+};
+// export const initMessageSocket = () => {
+//   return io("http://localhost:7000", { transports: ["websocket"] });
+// };

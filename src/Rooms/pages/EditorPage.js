@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import Client from '../components/client';
 import Editor from '../components/editor';
 import VideoTiles from '../components/VideoTiles';
-import { initSocket } from '../socket';
+import { initRoomSocket } from '../socket';
 import { useLocation, useNavigate, Navigate, useParams } from 'react-router-dom';
 import ACTIONS from '../Actions';
 import logo from "../../assets/images/Zcoderlogo.svg";
@@ -126,7 +126,7 @@ const cleanupSocket = () => {
     const init = async () => {
       try {
         setConnecting(true);
-        socketRef.current = await initSocket();
+        socketRef.current = await initRoomSocket();
 
         if (!mountedRef.current) {
           cleanupSocket();

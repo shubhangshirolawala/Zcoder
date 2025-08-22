@@ -1,45 +1,79 @@
-import React, { useEffect, useState } from 'react';
-import './MyFriends.css';
-import axios from 'axios';
+// src/pages/MyFriends.jsx
+import React, { useEffect, useState, useRef } from "react";
+import "./MyFriends.css";
+import axios from "axios";
+import ChatWindow from "./chatWindow";
+import { initMessageSocket } from "../components/msgSocket";
+import { getMessageSocket } from "../components/msgSocket";
 
 const MyFriends = () => {
-    const [friends, setFriends] = useState([]);
-    const token = localStorage.getItem('token');
+  const [friends, setFriends] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [openChats, setOpenChats] = useState([]);
+  const token = localStorage.getItem("token");
+  const config = { headers: { Authorization: `Bearer ${token}` } };
 
-    const config= {
-        headers: {
-            Authorization: `Bearer ${token}`
+  useEffect(() => {
+    const load = async () => {
+      // get current user from localStorage (set during sign-in)
+      const user = localStorage.getItem("user");
+      if (user) {
+        setCurrentUser(JSON.parse(user));
+        // ensure socket exists after page refresh
+        const { _id } = JSON.parse(user);
+        if (!getMessageSocket()) {
+          await initMessageSocket(_id);
         }
+      } else {
+        // fallback: fetch from API
+        try {
+          const res = await axios.get("http://localhost:4000/api/v1/user/getUser", config);
+          setCurrentUser(res.data.userData);
+          if (!getMessageSocket()) {
+            await initMessageSocket(res.data.userData._id);
+          }
+        } catch (err) {
+          console.error("Failed to fetch current user:", err);
+        }
+      }
     };
+
     const fetchFriends = async () => {
-        const res = await axios.get('http://localhost:4000/api/v1/user/getAllFriends', config);
-        const friendsIds = res.data.friends;
-
-        try{
+      try {
+        const res = await axios.get("http://localhost:4000/api/v1/user/getAllFriends", config);
+        const friendsIds = res.data.friends || [];
         const friendsData = await Promise.all(
-            friendsIds.map(async (friendId) => {
-                const friendRes = await axios.get(`http://localhost:4000/api/v1/user/getUserById/${friendId}`, config);
-                return friendRes.data.userData;
-            })
-            
+          friendsIds.map(async (friendId) => {
+            const friendRes = await axios.get(`http://localhost:4000/api/v1/user/getUserById/${friendId}`, config);
+            return friendRes.data.userData;
+          })
         );
-    setFriends(friendsData);
-    }
-        catch (error) {
-            console.error("Error fetching friends:", error);
-            setFriends([]);
-            return;
-        }
-        
-    }
+        setFriends(friendsData);
+      } catch (error) {
+        console.error("Error fetching friends:", error);
+        setFriends([]);
+      }
+    };
 
-    useEffect(() => {
-        fetchFriends();
-    }, []);
+    load();
+    fetchFriends();
+  }, []);
 
-   return (
+  const openChatWithFriend = (friend) => {
+    // reuse a chat if already open for same friend (prevent duplicates)
+    const exists = openChats.find((c) => c._id === friend._id);
+    if (exists) return;
+    const chatId = `${friend._id}-${Date.now()}`;
+    setOpenChats((prev) => [...prev, { ...friend, chatId }]);
+  };
+
+  const closeChat = (chatId) => {
+    setOpenChats((prev) => prev.filter((chat) => chat.chatId !== chatId));
+  };
+
+  return (
     <div className="friends-container">
-      <div className="friends-header">My Friends</div>
+      {/* <div className="friends-header">My Friends</div> */}
       <div className="friends-list">
         {friends.length === 0 ? (
           <div style={{ color: '#888', textAlign: 'center' }}>No friends found.</div>
@@ -106,9 +140,8 @@ const MyFriends = () => {
                   }}>
                     View Profile
                 </button>
-                <button
-                style={{
-                    marginLeft: '16px',
+                <button className="friend-btn chat-btn"
+               style={{ marginLeft: '16px',
                     fontFamily: 'Raleway, sans-serif',
                     fontSize: '1.08rem',
                     color: '#fff',
@@ -121,13 +154,26 @@ const MyFriends = () => {
                     transition: 'background 0.2s',
                     height: '38px',
                     alignSelf: 'center',
-                  }}>Chat</button>
+                }}
+                onClick={() => openChatWithFriend(friend)}>Chat</button>
               </div>
               {idx !== friends.length - 1 && <div className="friend-divider" />}
             </React.Fragment>
           ))
         )}
       </div>
+
+      {/* Open chat windows */}
+      {openChats.map((chat, idx) => (
+        <ChatWindow
+          key={chat.chatId}
+          friend={chat}
+          currentUser={currentUser}
+          initialMessages={[]} // ChatWindow will fetch history
+          onClose={() => closeChat(chat.chatId)}
+          positionIndex={idx}
+        />
+      ))}
     </div>
   );
 };

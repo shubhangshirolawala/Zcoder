@@ -2,7 +2,11 @@ import React from "react";
 import Form from "./Form";
 import "./Login.css";
 // import Navbar from "../Navbar";
+import { connectSocket } from "../msgSocket";
 import zcoderlogo from "../../assets/images/Zcoderlogo.svg";
+
+let socket = null;
+
 const Login = () => {
   const [option, setOption] = React.useState(1);
 
