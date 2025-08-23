@@ -3,7 +3,22 @@ require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
+const mongoose = require("mongoose");
 
+// --- Connect MongoDB ---
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  console.log("[MESSAGE SERVER] Connected to MongoDB");
+}).catch(err => {
+  console.error("[MESSAGE SERVER] MongoDB connection error:", err);
+});
+
+// --- Import Message model ---
+const Message = require("./server/models/Message");
+
+// --- Express + Socket.IO setup ---
 const app = express();
 app.use(express.json());
 
@@ -12,14 +27,14 @@ const io = new Server(server, {
   cors: { origin: "http://localhost:3000", methods: ["GET", "POST"] },
 });
 
-
-const onlineUsers = new Map();
-const socketToUser = new Map();
+// --- In-memory maps for online users ---
+const onlineUsers = new Map();   // userId -> Set(socketIds)
+const socketToUser = new Map();  // socketId -> userId
 
 io.on("connection", (socket) => {
   console.log("[MESSAGE SERVER] Socket connected:", socket.id);
 
-  // add-user: payload can be a string userId or { userId }
+  // --- Add user ---
   socket.on("add-user", async (payload) => {
     try {
       const userId = typeof payload === "string" ? payload : (payload && payload.userId);
@@ -28,6 +43,7 @@ io.on("connection", (socket) => {
         return;
       }
 
+      // track online users
       const set = onlineUsers.get(userId) || new Set();
       set.add(socket.id);
       onlineUsers.set(userId, set);
@@ -35,69 +51,65 @@ io.on("connection", (socket) => {
 
       console.log(`[MESSAGE SERVER] User added: ${userId} -> ${socket.id}`);
 
-      // deliver pending messages if Message model exists
-      if (Message) {
-        try {
-          const pending = await Message.find({ to: userId, delivered: false }).sort({ createdAt: 1 });
-          if (pending.length) {
-            for (const msg of pending) {
-              socket.emit("msg-receive", {
-                from: msg.from,
-                message: msg.message,
-                _id: msg._id,
-                createdAt: msg.createdAt,
-                localId: msg.localId || null,
-              });
-              // mark delivered — if you want stricter semantics, mark on client ack instead
-              msg.delivered = true;
-              await msg.save();
-            }
-            console.log(`[MESSAGE SERVER] Delivered ${pending.length} pending messages to ${userId}`);
+      // deliver pending messages
+      try {
+        const pending = await Message.find({ to: userId, delivered: false }).sort({ createdAt: 1 });
+        if (pending.length) {
+          for (const msg of pending) {
+            socket.emit("msg-receive", {
+              from: msg.from,
+              message: msg.message,
+              _id: msg._id,
+              createdAt: msg.createdAt,
+              localId: msg.localId || null,
+            });
+            msg.delivered = true;
+            await msg.save();
           }
-        } catch (err) {
-          console.error("[MESSAGE SERVER] Error fetching or delivering pending messages:", err);
+          console.log(`[MESSAGE SERVER] Delivered ${pending.length} pending messages to ${userId}`);
         }
+      } catch (err) {
+        console.error("[MESSAGE SERVER] Error fetching/delivering pending messages:", err);
       }
     } catch (err) {
       console.error("[MESSAGE SERVER] add-user handler error:", err);
     }
   });
 
-  // send-msg: payload { from, to, msg, localId? }
+  // --- Send message ---
   socket.on("send-msg", async (payload) => {
     try {
-      const { from, to, msg } = payload || {};
+      const { from, to, msg, localId } = payload || {};
       if (!from || !to || typeof msg === "undefined") {
         console.warn("[MESSAGE SERVER] send-msg invalid payload:", payload);
         return;
       }
 
-      // optional check: ensure this socket is associated with `from`
+      // ensure socket matches user
       const mappedUser = socketToUser.get(socket.id);
       if (mappedUser && mappedUser !== from) {
         console.warn(`[MESSAGE SERVER] socket ${socket.id} mapped to ${mappedUser} but payload says from=${from}`);
-        // not rejecting to keep simple style; consider enforcing auth in production
       }
 
-      // persist message if Message model is available
-      let savedDoc = null;
-      if (Message) {
-        try {
-          savedDoc = await Message.create({
-            from,
-            to,
-            message: msg,
-            delivered: recipientSet && recipientSet.size > 0,
-            localId: localId || undefined,
-            createdAt: new Date(),
-          });
-        } catch (err) {
-          console.error("[MESSAGE SERVER] Error saving message to DB:", err);
-        }
-      }
-
-      // emit to all sockets for recipient
+      // find recipient sockets
       const recipientSet = onlineUsers.get(to);
+
+      // persist message
+      let savedDoc = null;
+      try {
+        savedDoc = await Message.create({
+          from,
+          to,
+          message: msg,
+          delivered: recipientSet && recipientSet.size > 0,
+          localId: localId || undefined,
+          createdAt: new Date(),
+        });
+      } catch (err) {
+        console.error("[MESSAGE SERVER] Error saving message to DB:", err);
+      }
+
+      // emit to recipient if online
       if (recipientSet && recipientSet.size > 0) {
         for (const sId of recipientSet) {
           io.to(sId).emit("msg-receive", {
@@ -108,21 +120,17 @@ io.on("connection", (socket) => {
             localId: savedDoc ? savedDoc.localId || null : (localId || null),
           });
         }
-        // mark delivered in DB if applicable
+        // mark delivered
         if (savedDoc) {
-          try {
-            savedDoc.delivered = true;
-            await savedDoc.save();
-          } catch (err) {
-            console.error("[MESSAGE SERVER] Error updating delivered flag:", err);
-          }
+          savedDoc.delivered = true;
+          await savedDoc.save();
         }
         console.log(`[MESSAGE SERVER] Delivered: ${from} -> ${to} : ${msg}`);
       } else {
         console.log(`[MESSAGE SERVER] User ${to} is offline. Message saved as pending.`);
       }
 
-      // ack sender with message id and delivered flag
+      // ack sender
       io.to(socket.id).emit("message-sent-ack", {
         localId: localId || null,
         _id: savedDoc ? savedDoc._id : null,
@@ -134,6 +142,7 @@ io.on("connection", (socket) => {
     }
   });
 
+  // --- Disconnect ---
   socket.on("disconnect", () => {
     console.log("[MESSAGE SERVER] Socket disconnected:", socket.id);
     const userId = socketToUser.get(socket.id);
